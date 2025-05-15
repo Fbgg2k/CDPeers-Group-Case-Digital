@@ -52,8 +52,6 @@ Nosso cliente quer responder à seguinte questão:
 
 Bom trabalho!
 
-Para desenvolver uma solução em Python para esse desafio de análise de dados da Infomaz, você pode seguir uma abordagem estruturada utilizando **pandas** para manipulação e análise dos dados. Aqui está uma base do que você pode fazer:
-
 ---
 
 ---
