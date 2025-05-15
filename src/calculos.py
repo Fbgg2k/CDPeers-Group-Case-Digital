@@ -1,5 +1,6 @@
-import pandas as pd
+import pandas as pd  # Importa a biblioteca pandas para manipulação de dados tabulares
 
+# Calcula o valor total de vendas por categoria de produto
 def valor_total_venda_por_categoria(dados):
     produtos = dados["Cadastro Produtos"]
     transacoes = dados["Transações Vendas"]
@@ -12,27 +13,27 @@ def valor_total_venda_por_categoria(dados):
     resultado = merged.groupby("CATEGORIA")["VALOR ITEM"].sum().reset_index().sort_values(by="VALOR ITEM", ascending=False)
     return resultado
 
-
+# Calcula a margem média dos produtos vendidos
 def margem_dos_produtos(dados):
     estoque = dados["Cadastro de Estoque"]
     transacoes = dados["Transações Vendas"]
     produtos = dados["Cadastro Produtos"]
 
-    # Convertendo os valores corretamente
+    # Conversão dos valores monetários para float
     transacoes["VALOR ITEM"] = transacoes["VALOR ITEM"].astype(str).replace('[R$ ]', '', regex=True).str.replace('.', '').str.replace(',', '.').astype(float)
     estoque["VALOR ESTOQUE"] = estoque["VALOR ESTOQUE"].astype(str).replace('[R$ ]', '', regex=True).str.replace('.', '').str.replace(',', '.').astype(float)
 
-    # Realizando merge correto entre produtos e estoque antes de unir com transações
+    # Merge entre produtos e estoque, depois com transações
     produtos_estoque = produtos.merge(estoque, on="ID ESTOQUE", how="left")
     merged = transacoes.merge(produtos_estoque, on="ID PRODUTO", how="left")
 
-    # Calculando a margem corretamente
+    # Cálculo da margem de cada produto
     merged["margem"] = merged["VALOR ITEM"] - (merged["VALOR ESTOQUE"] / merged["QTD ESTOQUE"])
 
     resultado = merged.groupby("ID PRODUTO")["margem"].mean().reset_index().sort_values(by="margem", ascending=False)
     return resultado
 
-
+# Gera ranking de clientes por quantidade de itens comprados por mês
 def ranking_clientes_por_qtd_mes(dados):
     transacoes = dados["Transações Vendas"]
     clientes = dados["Cadastro Clientes"]
@@ -49,7 +50,7 @@ def ranking_clientes_por_qtd_mes(dados):
     )
     return resultado
 
-
+# Gera ranking de fornecedores por quantidade de estoque recebido por mês
 def ranking_fornecedores_estoque_mes(dados):
     estoque = dados["Cadastro de Estoque"]
     fornecedores = dados["Cadastro Fornecedores"]
@@ -66,7 +67,7 @@ def ranking_fornecedores_estoque_mes(dados):
     )
     return resultado
 
-
+# Gera ranking de produtos por quantidade vendida por mês
 def ranking_produtos_qtd_vendida_mes(dados):
     transacoes = dados["Transações Vendas"]
 
@@ -81,7 +82,7 @@ def ranking_produtos_qtd_vendida_mes(dados):
     )
     return resultado
 
-
+# Gera ranking de produtos por valor de venda por mês
 def ranking_produtos_valor_venda_mes(dados):
     transacoes = dados["Transações Vendas"]
 
@@ -97,7 +98,7 @@ def ranking_produtos_valor_venda_mes(dados):
     )
     return resultado
 
-
+# Calcula a média do valor de venda por categoria e mês
 def media_valor_venda_categoria_mes(dados):
     produtos = dados["Cadastro Produtos"]
     transacoes = dados["Transações Vendas"]
@@ -115,7 +116,7 @@ def media_valor_venda_categoria_mes(dados):
     )
     return resultado
 
-
+# Gera ranking de margem média por categoria de produto
 def ranking_margem_por_categoria(dados):
     produtos = dados["Cadastro Produtos"]
     transacoes = dados["Transações Vendas"]
@@ -135,7 +136,7 @@ def ranking_margem_por_categoria(dados):
     )
     return resultado
 
-
+# Lista os produtos comprados por cada cliente
 def produtos_por_cliente(dados):
     transacoes = dados["Transações Vendas"]
     clientes = dados["Cadastro Clientes"]
@@ -150,7 +151,7 @@ def produtos_por_cliente(dados):
     )
     return resultado
 
-
+# Gera ranking de produtos por quantidade disponível em estoque
 def ranking_produtos_qtd_estoque(dados):
     estoque = dados["Cadastro de Estoque"]
     produtos = dados["Cadastro Produtos"]

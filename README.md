@@ -56,119 +56,75 @@ Para desenvolver uma solução em Python para esse desafio de análise de dados 
 
 ---
 
-## ✅ Pré-requisitos
+---
 
-Instale as bibliotecas necessárias:
+## 📁 Estrutura do Projeto
+
+Abaixo está uma sugestão de estrutura de pastas e arquivos para organizar o projeto:
+
+```
+informaz-analise/
+├── main.py
+├── requirements.txt
+├── README.md
+├── data/
+│   ├── Case_Infomaz_Base_de_Dados.xlsx
+│   └── Orientações.csv
+├── src/
+│   ├── __pycache__/
+│   ├── __init__.py
+│   ├── calculos.py
+│   ├── load_data.py
+│   └── relatorios.py
+└── venv/
+    └── [arquivos do ambiente virtual]
+```
+
+- **main.py**: script principal para execução do projeto
+- **requirements.txt**: dependências do projeto
+- **README.md**: documentação do projeto
+- **data/**: arquivos de dados fornecidos
+- **src/**: scripts Python para cálculos, carregamento de dados e geração de relatórios
+- **venv/**: ambiente virtual Python (não versionar os arquivos internos)
+- **src/__pycache__/**: arquivos compilados automaticamente pelo Python (não versionar)
+
+Adapte conforme a necessidade do seu grupo e do desafio.
+
+---
+
+
+---
+
+# CDPeers-Group-Case-Digital# Documentação do projeto
+
+## 🚀 Como instalar as dependências e executar o projeto
+
+Siga os passos abaixo para instalar as dependências e rodar o projeto:
+
+### 1. Clone o repositório
 
 ```bash
-pip install pandas
+git clone https://github.com/seu-usuario/seu-repositorio.git
+cd informaz-analise
 ```
 
----
+### 2. Crie e ative um ambiente virtual
 
-## ✅ Estrutura inicial em Python
-
-### 1. Carregamento dos dados
-
-Suponha que os dados estejam em arquivos `.csv`:
-
-```python
-import pandas as pd
-
-# Carregar as tabelas
-produtos = pd.read_csv('CADASTRO_PRODUTOS.csv')
-vendas = pd.read_csv('TRANSACOES_VENDAS.csv')
-estoque = pd.read_csv('CADASTRO_ESTOQUE.csv')
-clientes = pd.read_csv('CADASTRO_CLIENTES.csv')
-fornecedores = pd.read_csv('CADASTRO_FORNECEDORES.csv')
-```
-
----
-
-### 2. Métricas e Cálculos
-
-#### 1. **Valor total de venda dos produtos por categoria**
-
-```python
-df = vendas.merge(produtos, on='id_produto')
-valor_total_categoria = df.groupby('categoria')['valor_venda'].sum().reset_index()
-```
-
-#### 2. **Margem dos produtos (valor de venda - valor unitário)**
-
-```python
-df = vendas.merge(estoque[['id_produto', 'valor_unitario']], on='id_produto')
-df['margem'] = df['valor_venda'] - df['valor_unitario']
-```
-
-#### 3. **Ranking de clientes por quantidade de produtos comprados por mês**
-
-```python
-vendas['mes'] = pd.to_datetime(vendas['data_venda']).dt.to_period('M')
-ranking_clientes = vendas.groupby(['mes', 'id_cliente'])['quantidade'].sum().reset_index()
-ranking_clientes = ranking_clientes.sort_values(['mes', 'quantidade'], ascending=[True, False])
-```
-
-#### 4. **Ranking de fornecedores por estoque disponível por mês**
-
-```python
-estoque['mes'] = pd.to_datetime(estoque['data_entrada']).dt.to_period('M')
-ranking_fornecedores = estoque.groupby(['mes', 'id_fornecedor'])['quantidade_estoque'].sum().reset_index()
-ranking_fornecedores = ranking_fornecedores.sort_values(['mes', 'quantidade_estoque'], ascending=[True, False])
-```
-
-#### 5. **Ranking de produtos por quantidade de venda por mês**
-
-```python
-vendas['mes'] = pd.to_datetime(vendas['data_venda']).dt.to_period('M')
-ranking_produtos_qtd = vendas.groupby(['mes', 'id_produto'])['quantidade'].sum().reset_index()
-ranking_produtos_qtd = ranking_produtos_qtd.sort_values(['mes', 'quantidade'], ascending=[True, False])
-```
-
-#### 6. **Ranking de produtos por valor de venda por mês**
-
-```python
-ranking_produtos_valor = vendas.groupby(['mes', 'id_produto'])['valor_venda'].sum().reset_index()
-ranking_produtos_valor = ranking_produtos_valor.sort_values(['mes', 'valor_venda'], ascending=[True, False])
-```
-
-#### 7. **Média de valor de venda por categoria por mês**
-
-```python
-df = vendas.merge(produtos, on='id_produto')
-df['mes'] = pd.to_datetime(df['data_venda']).dt.to_period('M')
-media_valor_categoria = df.groupby(['mes', 'categoria'])['valor_venda'].mean().reset_index()
-```
-
-#### 8. **Ranking de margem de lucro por categoria**
-
-```python
-df = df.merge(estoque[['id_produto', 'valor_unitario']], on='id_produto')
-df['margem'] = df['valor_venda'] - df['valor_unitario']
-ranking_margem_categoria = df.groupby('categoria')['margem'].mean().reset_index().sort_values(by='margem', ascending=False)
-```
-
-#### 9. **Lista de produtos comprados por cliente**
-
-```python
-produtos_por_cliente = vendas.merge(produtos, on='id_produto')
-lista_produtos_clientes = produtos_por_cliente.groupby('id_cliente')['nome_produto'].unique().reset_index()
-```
-
-#### 10. **Ranking de produtos por quantidade de estoque**
-
-```python
-ranking_estoque = estoque.groupby('id_produto')['quantidade_estoque'].sum().reset_index().sort_values(by='quantidade_estoque', ascending=False)
-```
-
----
-
-1️⃣ Usar um Ambiente Virtual (Recomendado)
-Você pode criar um ambiente virtual e instalar os pacotes dentro dele:
-[source venv/bin/activate
-]
-bash
+```bash
 python3 -m venv venv
-source venv/bin/activate
+source venv/bin/activate  # No Windows use: venv\Scripts\activate
+```
+
+### 3. Instale as dependências
+
+```bash
 pip install -r requirements.txt
-Isso cria uma pasta venv onde os pacotes são gerenciados independentemente do sistema.
+```
+
+### 4. Execute o arquivo principal
+
+```bash
+python main.py
+```
+
+Pronto! O projeto estará rodando e você poderá analisar os dados conforme as instruções do desafio.

@@ -1,3 +1,6 @@
+# requirements.txt lista todas as dependências necessárias para executar este aplicativo Python.
+# Ele garante que todas as bibliotecas essenciais (como pandas para análise de dados, openpyxl e xlrd para manipulação de arquivos Excel, e tk para interfaces gráficas) sejam instaladas corretamente no ambiente.
+# Este arquivo facilita a instalação automática dos pacotes usando o comando `pip install -r requirements.txt`, promovendo reprodutibilidade e facilidade de configuração do projeto.
 # Dependências do projeto
 
 pandas
