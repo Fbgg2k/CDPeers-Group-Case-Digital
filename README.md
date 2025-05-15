@@ -58,7 +58,7 @@ Bom trabalho!
 
 ## 📁 Estrutura do Projeto
 
-Abaixo está uma sugestão de estrutura de pastas e arquivos para organizar o projeto:
+Abaixo está uma sugestão da estrutura de pastas e arquivos sobre o projeto:
 
 ```
 informaz-analise/
