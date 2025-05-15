@@ -1,0 +1,6 @@
+# Dependências do projeto
+
+pandas
+openpyxl
+xlrd
+tk
