@@ -54,7 +54,6 @@ Bom trabalho!
 
 ---
 
----
 
 # CDPeers-Group-Case-Digital
 
@@ -91,10 +90,6 @@ informaz-analise/
 Adaptável conforme a necessidade do desafio.
 
 ---
-
-
----
-
 
 ## Documentação do projeto
 
