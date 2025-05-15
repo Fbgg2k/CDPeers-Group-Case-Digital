@@ -1,4 +1,4 @@
-# CDPeers-Group-Case-Digital# Documentação do projeto
+# CDPeers-Group-Case-Digital# Documentação do desafio
 
 # Desafio de Análise de Dados - Infomaz
 
