@@ -1,5 +1,4 @@
 # CDPeers-Group-Case-Digital
-# Documentação do desafio
 
 # Desafio de Análise de Dados - Infomaz
 
@@ -94,7 +93,9 @@ Adapte conforme a necessidade do seu grupo e do desafio.
 
 ---
 
-# CDPeers-Group-Case-Digital# Documentação do projeto
+# CDPeers-Group-Case-Digital
+
+# Documentação do projeto
 
 ## 🚀 Como instalar as dependências e executar o projeto
 
