@@ -86,7 +86,7 @@ informaz-analise/
 - **venv/**: ambiente virtual Python (não versionar os arquivos internos)
 - **src/__pycache__/**: arquivos compilados automaticamente pelo Python (não versionar)
 
-Adapte conforme a necessidade do seu grupo e do desafio.
+Adaptável conforme a necessidade do desafio.
 
 ---
 
