@@ -56,6 +56,8 @@ Bom trabalho!
 
 ---
 
+# CDPeers-Group-Case-Digital
+
 ## 📁 Estrutura do Projeto
 
 Abaixo está uma sugestão da estrutura de pastas e arquivos sobre o projeto:
@@ -93,7 +95,6 @@ Adaptável conforme a necessidade do desafio.
 
 ---
 
-# CDPeers-Group-Case-Digital
 
 ## Documentação do projeto
 
