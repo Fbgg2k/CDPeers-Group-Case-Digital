@@ -95,7 +95,7 @@ Adapte conforme a necessidade do seu grupo e do desafio.
 
 # CDPeers-Group-Case-Digital
 
-# Documentação do projeto
+## Documentação do projeto
 
 ## 🚀 Como instalar as dependências e executar o projeto
 
