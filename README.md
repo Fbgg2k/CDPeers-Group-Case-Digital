@@ -50,11 +50,6 @@ Nosso cliente quer responder à seguinte questão:
 
 ---
 
-Bom trabalho!
-
----
-
-
 # CDPeers-Group-Case-Digital
 
 ## 📁 Estrutura do Projeto
